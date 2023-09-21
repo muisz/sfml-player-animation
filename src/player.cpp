@@ -20,6 +20,10 @@ Player::Player() {
     animationScene = 0;
 }
 
+void Player::setPosition(sf::Vector2f position) {
+    player.setPosition(position);
+}
+
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(player, states);
 }

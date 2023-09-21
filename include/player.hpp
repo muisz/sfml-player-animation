@@ -38,6 +38,7 @@ public:
     void moveUp(bool isPressed);
     void moveDown(bool isPressed);
     void running(bool isPressed);
+    void setPosition(sf::Vector2f position);
 };
 
 #endif

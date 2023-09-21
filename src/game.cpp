@@ -4,6 +4,15 @@ Game::Game()
 : window(sf::VideoMode(600, 400), "Point Picker")
 {
     TimePerFrame = sf::seconds(1.f / 60.f);
+    texture.loadFromFile("assets/Background.png");
+    background.setTexture(texture);
+
+    view.setCenter(sf::Vector2f(600.f, 550.f));
+    view.setSize(600, 400);
+
+    player.setPosition(sf::Vector2f(600.f, 400.f));
+
+    window.setView(view);
 }
 
 void Game::run() {
@@ -46,6 +55,7 @@ void Game::update(sf::Time deltaTime) {
 
 void Game::render() {
     window.clear();
+    window.draw(background);
     window.draw(player);
     window.display();
 }

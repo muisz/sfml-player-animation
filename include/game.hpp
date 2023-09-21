@@ -8,6 +8,10 @@ class Game {
 private:
     sf::Time TimePerFrame;
     sf::RenderWindow window;
+    sf::Texture texture;
+    sf::Sprite background;
+    sf::View view;
+    sf::RectangleShape ground;
 
     Player player;
 
