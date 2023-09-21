@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "player.hpp"
 
@@ -19,6 +20,7 @@ private:
     void update(sf::Time deltaTime);
     void render();
     void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
+    bool touchTheGround(sf::Vector2f objectPosition);
 
 public:
     Game();

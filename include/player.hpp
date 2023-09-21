@@ -22,6 +22,7 @@ private:
     bool isMovingUp;
     bool isMovingDown;
     bool isRunning;
+    bool isFalling;
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     void updatePlayerMovement(sf::Time deltaTime);
@@ -37,8 +38,11 @@ public:
     void moveRight(bool isPressed);
     void moveUp(bool isPressed);
     void moveDown(bool isPressed);
+    void falling(bool state);
     void running(bool isPressed);
     void setPosition(sf::Vector2f position);
+
+    sf::Vector2f getPosition();
 };
 
 #endif

@@ -16,6 +16,7 @@ Player::Player() {
     isMovingUp = false;
     isMovingDown = false;
     isRunning = false;
+    isFalling = false;
 
     animationScene = 0;
 }
@@ -53,6 +54,9 @@ void Player::updatePlayerMovement(sf::Time deltaTime) {
         player.setScale(-1.f, 1);
     else if (isMovingRight)
         player.setScale(1.f, 1.f);
+    
+    if (isFalling)
+        movement.y += movementSteps;
         
     player.move(movement * deltaTime.asSeconds());
 }
@@ -109,4 +113,12 @@ void Player::moveDown(bool isPressed) {
 
 void Player::running(bool isPressed) {
     isRunning = isPressed;
+}
+
+void Player::falling(bool state) {
+    isFalling = state;
+}
+
+sf::Vector2f Player::getPosition() {
+    return player.getPosition();
 }

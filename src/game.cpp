@@ -12,6 +12,10 @@ Game::Game()
 
     player.setPosition(sf::Vector2f(600.f, 400.f));
 
+    ground = sf::RectangleShape(sf::Vector2f(900.f, 20));
+    ground.setFillColor(sf::Color::Transparent);
+    ground.setPosition(sf::Vector2f(0.f, 730.f));
+
     window.setView(view);
 }
 
@@ -51,12 +55,14 @@ void Game::processEvents() {
 
 void Game::update(sf::Time deltaTime) {
     player.update(deltaTime);
+    player.falling(!touchTheGround(player.getPosition()));
 }
 
 void Game::render() {
     window.clear();
     window.draw(background);
     window.draw(player);
+    window.draw(ground);
     window.display();
 }
 
@@ -69,17 +75,13 @@ void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed) {
         case sf::Keyboard::Right:
             player.moveRight(isPressed);
             break;
-
-        case sf::Keyboard::Up:
-            player.moveUp(isPressed);
-            break;
-
-        case sf::Keyboard::Down:
-            player.moveDown(isPressed);
-            break;
         
         case sf::Keyboard::Space:
             player.running(isPressed);
             break;
     }
+}
+
+bool Game::touchTheGround(sf::Vector2f objectPosition) {
+    return objectPosition.y >= (ground.getPosition().y - ground.getSize().y);
 }
